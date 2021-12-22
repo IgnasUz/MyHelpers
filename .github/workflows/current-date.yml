@@ -9,7 +9,7 @@ on:
   
 env:
     CURRENT_DATE: echo "$(date +'%Y-%m-%d')"
-    RUN: echo ${{ env.CURRENT_DATE }}
+    RUN: echo ${{ CURRENT_DATE }}
     
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
