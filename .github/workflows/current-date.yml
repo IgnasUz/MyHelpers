@@ -8,13 +8,13 @@ on:
   workflow_dispatch:
   
 env:
-    CURRENT_DATE: echo "$(date +'%Y-%m-%d')"
-    RUN: echo ${{ CURRENT_DATE }}
+    RUN_WIDNOWS: Get-Date -Format "yyyy-MM-dd"
+    RUN_UBUNTU: echo "echo $(date +'%Y-%m-%d')"
     
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  my_job:
+  my_ubuntu_job:
     name: test job
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -23,6 +23,15 @@ jobs:
       - name: use env var in env var
         run: echo "$(date +'%Y-%m-%d')"
       - name: try use var
-        run: ${{ env.RUN }}
+        run: ${{ env.RUN_UBUNTU }}
+  # This workflow contains a single job called "build"
+  my_win_job:
+    name: test win_job
+    # The type of runner that the job will run on
+    runs-on: windows-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: get date
+        run: ${{ env.RUN_WIDNOWS }}
         
 
