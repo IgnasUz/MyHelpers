@@ -7,8 +7,9 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
   
-#env:
-#    RUN: echo "$(date +'%Y-%m-%d')"
+env:
+    CURRENT_DATE: echo "$(date +'%Y-%m-%d')"
+    RUN: echo ${{ env.CURRENT_DATE }}
     
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -16,10 +17,12 @@ jobs:
   my_job:
     name: test job
     # The type of runner that the job will run on
-    runs-on: [self-hosted, windows]
+    runs-on: ubuntu-latest
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: use env var in env var
-        run: Get-Date -Format "yyyy-MM-dd"
+        run: echo "$(date +'%Y-%m-%d')"
+      - name: try use var
+        run: ${{ env.RUN }}
         
 
