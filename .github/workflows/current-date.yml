@@ -7,8 +7,8 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
   
-env:
-    RUN: echo "$(date +'%Y-%m-%d')"
+#env:
+#    RUN: echo "$(date +'%Y-%m-%d')"
     
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -20,6 +20,6 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: use env var in env var
-        run: ${{ env.RUN }}
+        run: echo "$(date +'%Y-%m-%d')"
         
 
