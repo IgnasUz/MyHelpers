@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
   
 env:
-    RUN_WIDNOWS: Get-Date -Format "yyyy-MM-dd"
+    RUN_WIDNOWS: echo "ReleaseDate=$(Get-Date -Format "yyyy-MM-dd")"
     RUN_UBUNTU: echo "echo $(date +'%Y-%m-%d')"
     
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
