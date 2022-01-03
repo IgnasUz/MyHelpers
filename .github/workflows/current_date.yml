@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
   
 env:
-  DATEZY: echo $(%date:~10,4%-%date:~4,2%-%date:~7,2%)
+  DATEZY: '%date:~10,4%-%date:~4,2%-%date:~7,2%'
   DATEZY_2: $(Get-Date -Format "yyyy-MM-dd")
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
