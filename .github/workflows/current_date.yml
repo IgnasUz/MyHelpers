@@ -31,10 +31,10 @@ jobs:
         - name: Set CMD Date Env Variable
           run: echo CURRENT_DATE_CMD=%date:~10,4%-%date:~4,2%-%date:~7,2% >> $GITHUB_ENV
         - name: Output new CMD var
-          run: echo $CURRENT_DATE_CMD
+          run: echo ${{ env.CURRENT_DATE_CMD }}
         - name: Set Current Date Env Variable
           run: echo "CURRENT_DATE=$(Get-Date -Format "yyyy-MM-dd")" >> $GITHUB_ENV
         - name: Output new var
-          run: echo $CURRENT_DATE
+          run: echo ${{ env.CURRENT_DATE }}
         - name: use env var in run
           run: echo CurrentDate=$CURRENT_DATE
