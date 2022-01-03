@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
   
 env:
-  DATEZY: '%date:~10,4%-%date:~4,2%-%date:~7,2%'
+  DATEZY: echo %date:~10,4%-%date:~4,2%-%date:~7,2%
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
