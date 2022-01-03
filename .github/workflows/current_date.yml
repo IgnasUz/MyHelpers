@@ -1,0 +1,33 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Current-date_test
+
+# Controls when the workflow will run
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  ubuntu_job:
+    name: ubuntu test job
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: set current date as env var
+        run: echo "UBUNTU_CURRENT_DATE::$(date + '%Y-%m-%d')" >> $GITHUB_ENV
+      - name: use env var in env var
+        run: CurrentDate=${{ env.UBUNTU_CURRENT_DATE }}
+        
+  windows_job:
+      name: windows test job
+      # The type of runner that the job will run on
+      runs-on: windows-latest
+      # Steps represent a sequence of tasks that will be executed as part of the job
+      steps:
+        - name: Set Current Date Env Variable
+          run: echo "WINDOWS_CURRENT_DATE=$(get-date -format 'yyyy-MM-dd')" >> $GITHUB_ENV
+        - name: use env var in env var
+          run: CurrentDate=${{ env.WINDOWS_CURRENT_DATE }}
