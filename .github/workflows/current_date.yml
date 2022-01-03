@@ -8,8 +8,7 @@ on:
   workflow_dispatch:
   
 env:
-  DATEZY: '%date:~10,4%-%date:~4,2%-%date:~7,2%'
-  DATEZY_2: $(Get-Date -Format "yyyy-MM-dd")
+  DATEZY: "%date:~10,4%-%date:~4,2%-%date:~7,2%"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -31,18 +30,6 @@ jobs:
       runs-on: windows-latest
       # Steps represent a sequence of tasks that will be executed as part of the job
       steps:
-        - uses: actions/checkout@v2
-        - name: Set Current Date Env Variable
-          run: echo "CURRENT_DATE=$(Get-Date -Format "yyyy-MM-dd")" >> $GITHUB_ENV
-        - name: global env cmd use
-          run: echo date=${{env.DATEZY}}
-        - name: global env use
-          run: echo date=${{env.DATEZY_2}}
-        - name: Set CMD Date Env Variable
-          run: echo "CURRENT_DATE_CMD=%date:~10,4%-%date:~4,2%-%date:~7,2%" >> $GITHUB_ENV
-        - name: Output new CMD var
-          run: echo date=${{ env.CURRENT_DATE_CMD }}       
-        - name: Output new var
-          run: echo date=${{ env.CURRENT_DATE }}
-        - name: use env var in run
-          run: echo CurrentDate=$CURRENT_DATE
+        # - uses: actions/checkout@v2
+        - name: Print Date
+          run: example.bat ${{ env.DATEZY }}
