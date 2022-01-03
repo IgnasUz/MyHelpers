@@ -19,7 +19,7 @@ jobs:
       - name: set current date as env var
         run: echo "UBUNTU_CURRENT_DATE::$(date + '%Y-%m-%d')" >> $GITHUB_ENV
       - name: use env var in env var
-        run: CurrentDate=${{ env.UBUNTU_CURRENT_DATE }}
+        run: echo CurrentDate=${{ env.UBUNTU_CURRENT_DATE }}
         
   windows_job:
       name: windows test job
@@ -30,4 +30,4 @@ jobs:
         - name: Set Current Date Env Variable
           run: echo "WINDOWS_CURRENT_DATE=$(get-date -format 'yyyy-MM-dd')" >> $GITHUB_ENV
         - name: use env var in env var
-          run: CurrentDate=${{ env.WINDOWS_CURRENT_DATE }}
+          run: echo CurrentDate=${{ env.WINDOWS_CURRENT_DATE }}
