@@ -32,6 +32,8 @@ jobs:
       # Steps represent a sequence of tasks that will be executed as part of the job
       steps:
         - uses: actions/checkout@v2
+        - name: Set Current Date Env Variable
+          run: echo "CURRENT_DATE=$(Get-Date -Format "yyyy-MM-dd")" >> $GITHUB_ENV
         - name: global env cmd use
           run: echo date=${{env.DATEZY}}
         - name: global env use
@@ -39,9 +41,7 @@ jobs:
         - name: Set CMD Date Env Variable
           run: echo "CURRENT_DATE_CMD=%date:~10,4%-%date:~4,2%-%date:~7,2%" >> $GITHUB_ENV
         - name: Output new CMD var
-          run: echo date=${{ env.CURRENT_DATE_CMD }}
-        - name: Set Current Date Env Variable
-          run: echo "CURRENT_DATE=$(Get-Date -Format "yyyy-MM-dd")" >> $GITHUB_ENV
+          run: echo date=${{ env.CURRENT_DATE_CMD }}       
         - name: Output new var
           run: echo date=${{ env.CURRENT_DATE }}
         - name: use env var in run
