@@ -32,4 +32,4 @@ jobs:
       steps:
         # - uses: actions/checkout@v2
         - name: Print Date
-          run: ./example.bat ${{ env.DATEZY }}
+          run: .\example.bat ${{ env.DATEZY }}
