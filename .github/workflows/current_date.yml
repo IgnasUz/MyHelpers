@@ -6,6 +6,9 @@ name: Current-date_test_2
 on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+  
+env:
+  DATEZY: '%date:~10,4%-%date:~4,2%-%date:~7,2%'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -28,13 +31,15 @@ jobs:
       # Steps represent a sequence of tasks that will be executed as part of the job
       steps:
         - uses: actions/checkout@v2
+        - name: global env use
+          run: echo date=${{env.DATEZY}}
         - name: Set CMD Date Env Variable
           run: echo CURRENT_DATE_CMD=%date:~10,4%-%date:~4,2%-%date:~7,2% >> $GITHUB_ENV
         - name: Output new CMD var
-          run: echo ${{ env.CURRENT_DATE_CMD }}
+          run: echo date=${{ env.CURRENT_DATE_CMD }}
         - name: Set Current Date Env Variable
           run: echo "CURRENT_DATE=$(Get-Date -Format "yyyy-MM-dd")" >> $GITHUB_ENV
         - name: Output new var
-          run: echo ${{ env.CURRENT_DATE }}
+          run: echo date=${{ env.CURRENT_DATE }}
         - name: use env var in run
           run: echo CurrentDate=$CURRENT_DATE
