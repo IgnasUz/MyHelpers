@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Current-date_test
+name: Current-date_test_2
 
 # Controls when the workflow will run
 on:
@@ -17,7 +17,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: set current date as env var
-        run: echo "UBUNTU_CURRENT_DATE::$(date + '%Y-%m-%d')" >> $GITHUB_ENV
+        run: echo "CURRENT_DATEU::$(date + '%Y-%m-%d')" >> $GITHUB_ENV
       - name: use env var in env var
         run: echo CurrentDate=${{ env.UBUNTU_CURRENT_DATE }}
         
@@ -28,6 +28,6 @@ jobs:
       # Steps represent a sequence of tasks that will be executed as part of the job
       steps:
         - name: Set Current Date Env Variable
-          run: echo "WINDOWS_CURRENT_DATE=$(get-date -format 'yyyy-MM-dd')" >> $GITHUB_ENV
+          run: echo "CURRENT_DATE=$(Get-Date -Format 'yyyy-MM-dd')" >> $GITHUB_ENV
         - name: use env var in env var
           run: echo CurrentDate=${{ env.WINDOWS_CURRENT_DATE }}
